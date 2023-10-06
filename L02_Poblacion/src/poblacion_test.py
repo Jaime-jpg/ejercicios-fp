@@ -6,6 +6,7 @@ REVISOR: José Antonio Troyano, Daniel Mateos, Mariano González, Fermín Cruz
 ÚLTIMA MODIFICACIÓN: 10/10/2022
 """
 from poblacion import *  # >>> comentario de Jaime: es mala idea el "import *"
+                         # >>> https://www.geeksforgeeks.org/why-import-star-in-python-is-a-bad-idea/
 
 
 ################################################################
@@ -110,6 +111,7 @@ RUTA_ARCHIVO = "C:\\Users\\jaime\\Documents\\ProyectosPython\\L02_Poblacion\\dat
 # >>> comentario de Jaime: es mala práctica llamar múltiples funciones dentro del 'if __name__ == "__main__"' (mirar mis otros archivos para ver como se debe hacer)
 if __name__ == "__main__":
     # >>> comentario de Jaime: la función escrita por el profesor para la ruta es una cutrada
+    # >>> si se desea algo parecido, usar "Pathlib"
     datos = lee_poblaciones(RUTA_ARCHIVO)
 
     test_lee_poblaciones(datos)
