@@ -13,12 +13,12 @@ Persona2 = namedtuple(
 )
 
 Persona3 = namedtuple(
-    "Persona2",
+    "Persona3",
     "dni, nombre, apellidos, edad, estatura, peso, localidad, provincia, esmujer, hobbies",
 )
 
 Persona4 = namedtuple(
-    "Persona2",
+    "Persona4",
     "dni, nombre, apellidos, edad, estatura, peso, localidad, provincia, esmujer, hobbies,"
     "fecha_entrada, hora_entrada",
 )
@@ -122,4 +122,12 @@ def lee_datos_personales4(ruta_archivo: str) -> list[Persona3]:
             )
             for i in no_cabecera
         ]
+
+
+def todos_entran_entre_anyos(personas: list[Persona4], anyo1: int, anyo2: int) -> bool:
+    return all(anyo1 <= i.fecha_entrada.year <= anyo2 for i in personas)
+
+
+def alguien_ha_madrugado(personas: list[Persona4], hora: int) -> bool:
+    return any(i.hora_entrada.hour < hora for i in personas)
 

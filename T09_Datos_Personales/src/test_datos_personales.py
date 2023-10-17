@@ -3,6 +3,8 @@ from datos_personales import (
     lee_datos_personales2,
     lee_datos_personales3,
     lee_datos_personales4,
+    todos_entran_entre_anyos,
+    alguien_ha_madrugado,
 )
 
 RUTA_CSV = "C:\\Users\\jaime\\Documents\\ProyectosPython\\T09_Datos_Personales\\data\\"
@@ -62,6 +64,13 @@ def main() -> None:
     # cuento la cabecera en este caso porque el enunciado no dice nada
     print(f"Tres primeros registros: {formato_personas(personas[:3])}\n")
     print(f"Tres últimos registros: {formato_personas(personas[-3:])}\n")
+    
+    print(todos_entran_entre_anyos(personas, 1900, 2025))  # True
+    print(todos_entran_entre_anyos(personas, 2020, 2025))  # False
+    print()
+    
+    print(alguien_ha_madrugado(personas, 12))  # True
+    print(alguien_ha_madrugado(personas, 4))  # False
 
 
 if __name__ == "__main__":
