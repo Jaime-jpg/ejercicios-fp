@@ -1,5 +1,6 @@
 from collections import namedtuple
 import csv
+from datetime import datetime
 
 
 Persona = namedtuple(
@@ -14,6 +15,12 @@ Persona2 = namedtuple(
 Persona3 = namedtuple(
     "Persona2",
     "dni, nombre, apellidos, edad, estatura, peso, localidad, provincia, esmujer, hobbies",
+)
+
+Persona4 = namedtuple(
+    "Persona2",
+    "dni, nombre, apellidos, edad, estatura, peso, localidad, provincia, esmujer, hobbies,"
+    "fecha_entrada, hora_entrada",
 )
 
 
@@ -62,7 +69,7 @@ def lee_datos_personales2(ruta_archivo: str) -> list[Persona2]:
                 i[1],
                 i[2],
                 int(i[3]),
-                float(i[4]).replace(",", "."),
+                float(i[4].replace(",", ".")),
                 float(i[5].replace(",", ".")),
                 i[6],
                 i[7],
@@ -92,4 +99,27 @@ def lee_datos_personales3(ruta_archivo: str) -> list[Persona3]:
             for i in no_cabecera
         ]
 
+
+def lee_datos_personales4(ruta_archivo: str) -> list[Persona3]:
+    with open(ruta_archivo, "r", encoding="utf-8") as f:
+        no_cabecera = csv.reader(f, delimiter=";")
+        next(no_cabecera)
+        
+        return [
+            Persona4(
+                i[0],
+                i[1],
+                i[2],
+                int(i[3]),
+                float(i[4]),
+                float(i[5].replace(",", ".")),
+                i[6],
+                i[7],
+                i[8] == "SI",
+                i[9].split("/"),
+                datetime.strptime(i[10].split("#")[0], "%d/%m/%Y").date(),
+                datetime.strptime(i[10].split("#")[1], "%H:%M:%S").time(),                    
+            )
+            for i in no_cabecera
+        ]
 

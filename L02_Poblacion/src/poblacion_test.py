@@ -110,7 +110,7 @@ RUTA_ARCHIVO = "C:\\Users\\jaime\\Documents\\ProyectosPython\\L02_Poblacion\\dat
 
 # >>> comentario de Jaime: es mala práctica llamar múltiples funciones dentro del 'if __name__ == "__main__"' (mirar mis otros archivos para ver como se debe hacer)
 if __name__ == "__main__":
-    # >>> comentario de Jaime: la función escrita por el profesor para la ruta es una cutrada
+    # >>> comentario de Jaime: la función escrita por el profesor para obtener la ruta es una cutrada
     # >>> si se desea algo parecido, usar "Pathlib"
     datos = lee_poblaciones(RUTA_ARCHIVO)
 
