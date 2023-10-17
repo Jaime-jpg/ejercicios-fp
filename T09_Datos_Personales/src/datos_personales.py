@@ -13,12 +13,12 @@ Persona2 = namedtuple(
 )
 
 Persona3 = namedtuple(
-    "Persona3",
+    "Persona2",
     "dni, nombre, apellidos, edad, estatura, peso, localidad, provincia, esmujer, hobbies",
 )
 
 Persona4 = namedtuple(
-    "Persona4",
+    "Persona2",
     "dni, nombre, apellidos, edad, estatura, peso, localidad, provincia, esmujer, hobbies,"
     "fecha_entrada, hora_entrada",
 )
@@ -130,4 +130,3 @@ def todos_entran_entre_anyos(personas: list[Persona4], anyo1: int, anyo2: int) -
 
 def alguien_ha_madrugado(personas: list[Persona4], hora: int) -> bool:
     return any(i.hora_entrada.hour < hora for i in personas)
-
