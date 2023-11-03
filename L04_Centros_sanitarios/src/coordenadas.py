@@ -11,7 +11,7 @@ def calcular_distancia(coordenada1: Coordenadas, coordenada2: Coordenadas) -> fl
     )
 
 
-def calcular_media_coordenadas(coordenadas: list[Coordenadas]) -> float:
+def calcular_media_coordenadas(coordenadas: list[Coordenadas]) -> Coordenadas:
     return Coordenadas(
         sum(i.latitud for i in coordenadas) / len(coordenadas),
         sum(i.longitud for i in coordenadas) / len(coordenadas),

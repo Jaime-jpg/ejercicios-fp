@@ -35,7 +35,7 @@ def calcular_total_camas_centros_accesibles(centros: list[CentroSanitario]) -> i
 
 def obtener_centros_con_uci_cercanos_a(
     centros: list[CentroSanitario], punto_central: Coordenadas, umbral: float
-) -> tuple[str, str, Coordenadas]:
+) -> list[tuple[str, str, Coordenadas]]:
     return [
         (i.nombre, i.localidad, i.coordenadas)
         for i in centros
@@ -43,8 +43,9 @@ def obtener_centros_con_uci_cercanos_a(
     ]
 
 
-def generar_mapa(centros: tuple[str, str, Coordenadas]) -> folium.Map:
-    mapa = crea_mapa(calcular_media_coordenadas([i[2] for i in centros]))
+def generar_mapa(centros: list[tuple[str, str, Coordenadas]]) -> None:
+    centro_mapa = calcular_media_coordenadas([i[2] for i in centros])
+    mapa = crea_mapa(centro_mapa)
     for i in centros:
         agrega_marcador(mapa, i[2], i[0], "red")
     guarda_mapa(mapa, r"C:\Users\jaime\Documents\ProyectosPython\L04_Centros_sanitarios\data\mapa")
