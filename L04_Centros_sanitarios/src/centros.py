@@ -9,6 +9,20 @@ CentroSanitario = namedtuple(
     "nombre, localidad, coordenadas, estado, num_camas, acceso_minusvalidos, tiene_uci",
 )
 
+"""
+Mejor forma de hacerlo
+
+from typing import NamedTuple
+class CentroSanitario(NamedTuple):
+    nombre: str
+    localidad: str
+    coordenadas: Coordenadas
+    estado: str
+    num_camas: int
+    acceso_minusvalidos: bool
+    tiene_uci: bool
+"""
+
 
 def leer_centros(ruta_archivo: str) -> list[CentroSanitario]:
     with open(ruta_archivo, encoding="utf-8") as f:
@@ -48,6 +62,8 @@ def generar_mapa(centros: list[tuple[str, str, Coordenadas]]) -> None:
     mapa = crea_mapa(centro_mapa)
     for i in centros:
         agrega_marcador(mapa, i[2], i[0], "red")
-    guarda_mapa(mapa, r"C:\Users\jaime\Documents\ProyectosPython\L04_Centros_sanitarios\data\mapa")
-    
-    
+    guarda_mapa(
+        mapa,
+        "C:\\Users\\jaime\\Documents\\ProyectosPython\\"
+        "L04_Centros_sanitarios\\data\\mapa.html",
+    )
