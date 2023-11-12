@@ -1,0 +1,92 @@
+Destino;Precio;Número Plazas;Número Pasajeros;codigo;Fecha Salida;Duracion (minutos);Hora Salida;velocidad media (km/h);Escalas;Económico
+Madrid ;52,60  ;  300;  250; IBE-123;05/07/2021;40;17:05:04;  759.84;La Coruña-Bilbao - Valencia-Mallorca; S
+Madrid;52,60;  305;  305;IBE-124;17/08/2021;40;07:42:15;799.27;Valencia-Sevilla; S
+Madrid;52,60;  300;  300;IBE-123;17/08/2021;45;06:42:18;849.97; Seviila-Malaga; S
+Madrid;52,60;  305;150;IBE-124;02/09/2021;45;06:41:06;896.57; Sevilla - Valencia-La Coruña; S
+Barcelona;100,79;  300;250;IBE-923;24/07/2021;65;21:58:07;940.41;Málaga - Valencia-Madrid;N
+Barcelona;100,79;  305;  305;IBE-924;  30/07/2021;65;15:31:36;780.01;Madrid-Bilbao;N
+Barcelona;100,79;  305;  305;IBE-930;29/09/2021;67;10:12:26;770.19;La Coruña-Bilbao - Valencia-Mallorca;N
+Madrid;55,00;  300;  300;IBE-123;29/09/2021;40;15:48:34;839.74;Valencia-Sevilla; S
+Madrid;55,00;  305;150;IBE-124;26/08/2021;40;07:29:57;930.84;Bilbao-La Coruña-Santiago; S
+Santiago;107,00;150;150;RYR-211;04/09/2021;78;08:05:00;775.58;La Coruña;N
+Santiago;123,45;200;200;RYR-212 ;29/07/2021;78;18:50:13;924.08;Bilbao-La Coruña;N
+Santiago;107,00;150;150;IBE-555;25/09/2021;78;13:56:56;924.95; Sevilla-La Coruña;N
+Santiago;123,45;200;78;RYR-212 ;29/09/2021;80;14:12:25;923.56;Mallorca-Alicante-Madrid;N
+Málaga;45,45;222 ;102 ;IBE-454;14/08/2021;25;10:24:46;792.03;Bilbao-Madrid; S
+Málaga;45,45;222 ;112 ;IBE-454;28/07/2021;25;20:25:07;869.23;Barcelona - Valencia-Mallorca-Alicante; S
+Málaga;45,45;222 ;100;IBE-454;12/09/2021;25;18:01:44;839.1;Mallorca-Alicante-Madrid; S
+Málaga;45,00;222 ;222 ;IBE-454;23/08/2021;25;16:31:14;906.65; Santiago-Sevilla;N
+Bilbao;91,50;260;200;VLG-100;19/07/2021;75;12:17:45;909.73; Sevilla-Madrid-Barcelona;N
+Bilbao;91,50;260;260;VLG-100;16/07/2021;75;07:16:14;871.73;Mallorca-Barcelona;N
+Bilbao;91,50;260;100;VLG-100;15/07/2021;78;19:26:58;840.32 ;Mallorca-Alicante-Madrid;N
+Bilbao;90,00;260;222 ;VLG-100;14/09/2021;80;17:27:33;807.85; Sevilla-Santiago;N
+Valencia;55,60;180;130;VLG-120;16/08/2021;45;06:03:58;822.12 ;; S
+Valencia;50,60;180;150;VLG-151;06/07/2021;45;21:13:45;892.38;Mallorca-Alicante; S
+Valencia;55,60;180;180;VLG-120;13/07/2021;45;16:18:46;764.18;Barcelona-Mallorca-Alicante; S
+Valencia;55,60;180;130;VLG-120;02/09/2021;45;10:07:01;872.85;Barcelona-Mallorca-Alicante; S
+Valencia;59,60;180;100;VLG-122 ;11/07/2021;45;09:21:09;870.74; Sevilla; S
+Málaga;45,45;222 ;110;IBE-490;03/09/2021;25;14:39:52 ;917.31;La Coruña-Bilbao - Valencia-Mallorca; S
+Málaga;45,00;200;200;IBE-490;05/08/2021;25;20:56:51;872.45;Valencia-Sevilla;N
+Barcelona;90,00;  300;250;IBE-823;16/07/2023 ;65;12:31:41;913.22 ; Seviila-Malaga;N
+Barcelona;100,79;  305;  300;IBE-824;07/09/2023 ;65;12:54:53;784.99; Sevilla - Valencia-La Coruña;N
+Madrid;52,60;  300;  300;IBE-123;09/07/2023 ;45;08:44:49;785.74;Málaga - Valencia; S
+Madrid;52,60;  305;150;IBE-124;21/08/2023 ;45;21:07:42 ;775.64;Bilbao; S
+Barcelona;100,79;  300;250;IBE-923;01/07/2023 ;65;14:32:41;803.08;La Coruña-Bilbao - Valencia-Mallorca;N
+Barcelona;100,79;  305;  305;IBE-924;06/09/2023 ;65;12:25:11;794.46;Valencia-Sevilla;N
+Madrid;55,00;  300;  300;IBE-123;26/08/2023 ;40;17:49:55;786.48;Bilbao-La Coruña-Santiago; S
+Madrid;55,00;  305;150;IBE-124;09/09/2023 ;40;10:16:12 ;943.85;La Coruña; S
+Santiago;107,00;150;150;RYR-211;05/09/2023 ;78;13:31:53;886.82 ;Bilbao-La Coruña;N
+Madrid;52,60;  300;250;IBE-123;18/07/2023 ;40;14:46:29;882.16; Sevilla-La Coruña; S
+Madrid;52,60;  305;  305;IBE-124;26/07/2023 ;40;14:49:05;819.72 ;Mallorca-Alicante; S
+Madrid;52,60;  300;  300;IBE-123;04/09/2023 ;45;10:01:32 ;807.66;Bilbao-Madrid; S
+Madrid;52,60;  305;150;IBE-124;27/08/2021;45;13:53:30;784.22 ;Barcelona - Valencia-Mallorca-Alicante; S
+Barcelona;100,79;  300;250;IBE-923;19/07/2021;65;06:12:25;888.66;Mallorca-Alicante-Madrid;N
+Barcelona;100,79;  305;  305;IBE-924;15/09/2021;65;12:22:15;866.8; Santiago-Sevilla;N
+Barcelona;100,79;  305;  305;IBE-930;14/09/2021;67;09:20:04;922.12 ; Sevilla-Madrid;N
+Madrid;55,00;  300;  300;IBE-123;24/09/2021;40;18:07:01;782.46;Mallorca-Barcelona; S
+Madrid;55,00;  305;150;IBE-124;  30/07/2021;40;12:25:49;830.06;Mallorca-Alicante; S
+Santiago;107,00;150;150;RYR-211;01/09/2021;78;08:43:22 ;778.21;Bilbao;N
+Santiago;123,45;200;200;RYR-212 ;11/07/2021;78;06:02:55;787.07;;N
+Santiago;107,00;150;150;IBE-555;21/09/2021;78;17:40:46;760.27;Mallorca-Alicante;N
+Santiago;123,45;200;78;RYR-212 ;25/08/2021;80;18:53:06;827.52 ;Barcelona-Mallorca-Alicante;N
+Málaga;45,45;222 ;102 ;IBE-454;02/07/2021;25;13:55:58;915.19;Barcelona-Mallorca-Alicante; S
+Málaga;45,45;222 ;112 ;IBE-454;03/09/2021;25;10:49:43;857.21; Sevilla; S
+Málaga;45,45;222 ;100;IBE-454;12/09/2022;25;14:20:30;859.56;La Coruña; S
+Málaga;45,00;222 ;222 ;IBE-454;04/09/2022;25;12:21:23;774.47;Bilbao-La Coruña;N
+Bilbao;91,50;260;200;VLG-100;08/09/2022;75;21:37:20;794.94; Sevilla-La Coruña;N
+Bilbao;91,50;260;260;VLG-100;16/07/2022;75;11:35:01;833.37;Mallorca-Alicante-Madrid;N
+Bilbao;91,50;260;100;VLG-100;11/09/2022;78;09:29:38;762.71;;N
+Bilbao;90,00;260;222 ;VLG-100;28/09/2022;80;12:44:15;932.92 ;Barcelona - Valencia-Mallorca-Alicante;N
+Valencia;55,60;180;130;VLG-120;05/09/2022;45;08:10:27;751.41;Mallorca-Alicante-Madrid; S
+Valencia;50,60;180;150;VLG-151;09/09/2022;45;09:28:37;845.94; Santiago-Sevilla; S
+Valencia;55,60;180;180;VLG-120;18/09/2022;45;17:58:30;927.56; Sevilla-Madrid-Barcelona; S
+Valencia;55,60;180;130;VLG-120;24/08/2022;45;11:52:57;847.63;Mallorca-Barcelona; S
+Valencia;59,60;180;100;VLG-122 ;08/09/2022;45;07:47:29;915.45;Mallorca-Alicante-Madrid; S
+Málaga;45,45;222 ;110;IBE-490;  31/07/2021;25;07:07:44;816.66; Sevilla-Santiago; S
+Málaga;45,00;200;200;IBE-490;05/07/2021;25;06:01:31;851.09;;N
+Barcelona;90,00;  300;250;IBE-823;27/09/2021;65;15:02:39;794.11;Mallorca-Alicante;N
+Barcelona;100,79;  305;  300;IBE-824;03/08/2021;65;16:34:45;873.74;Mallorca-Alicante;N
+Madrid;52,60;  300;  300;IBE-123;26/08/2021;45;10:35:12 ;810.98;Mallorca-Alicante - Valencia; S
+Madrid;52,60;  305;150;IBE-124;19/09/2021;45;21:55:46;803.57; Sevilla; S
+Barcelona;100,79;  300;250;IBE-923;19/07/2021;65;17:46:49;936.44;Bilbao-La Coruña;N
+Barcelona;100,79;  305;  305;IBE-924;25/09/2021;65;12:20:26;941.34; Sevilla-La Coruña-Bilbao - Valencia;N
+Madrid;55,00;  300;  300;IBE-123;15/09/2021;40;13:23:43;758.1;Mallorca-Alicante; S
+Madrid;55,00;  305;150;IBE-124;08/07/2021;40;17:55:10;757.22 ;Bilbao; S
+Santiago;107,00;150;150;RYR-211;23/07/2021;78;13:14:40;818.16;Barcelona - Valencia-Mallorca-Alicante;N
+Sevilla;124,56;250;150;IBE-777;22/08/2021;40;16:37:49;803.82 ;Mallorca-Alicante-Madrid;N
+Sevilla;124,56;250;155;IBE-777;  30/07/2021;40;20:23:27;756.74; Santiago;N
+Sevilla;124,56;250;250;IBE-777;22/08/2021;45;18:16:51;827.38; Santiago-Madrid;N
+Sevilla;124,56;250;200;IBE-777;21/08/2021;45;10:19:13;826.01;Mallorca-Barcelona;N
+Sevilla;99,99;  320;  310;IBE-981;23/09/2021;65;14:52:37;750.56;Mallorca-Alicante;N
+Sevilla;99,99;  320;250;IBE-981;13/07/2021;65;19:43:43;812.97;Bilbao;N
+Sevilla;99,99;  320;  305;IBE-981;14/08/2019 ;67;21:15:40;870.1;;N
+Sevilla;99,99;  320;  300;IBE-981;21/09/2019 ;40;07:17:54;806.2 ;Mallorca-Alicante;N
+Sevilla;99,99;  320;150;IBE-981;07/09/2019 ;40;09:32:14;894.7;Barcelona-Mallorca-Alicante;N
+Sevilla;99,99;  320;153;IBE-981;12/09/2019 ;78;20:18:18;888.2 ;Barcelona-Mallorca-Alicante;N
+Sevilla;75,23;150;150;VLG-101;14/09/2019 ;78;07:27:24;758.2 ;Las-Palmas;N
+Sevilla;75,23;150;145;VLG-101;24/08/2019 ;78;06:42:08;750.15;La Coruña;N
+Sevilla;75,23;150;130;VLG-101;14/09/2019 ;80;11:40:20;938.87;Bilbao-La Coruña;N
+Sevilla;75,23;150;150;VLG-101;08/08/2021;25;12:39:36;869.31; Santiago-La Coruña-Bilbao-Barcelona-Madrid;N
+Sevilla;80,10;150;150;RYR-222 ;05/07/2021;25;20:29:17;890.22 ;Mallorca-Alicante-Madrid;N
+Sevilla;80,50;150;120;RYR-222 ;14/08/2021;25;19:51:56;762.72 ;La Coruña-Bilbao - Valencia-Mallorca;N
+Sevilla;80,50;150;120;RYR-222 ;23/09/2021;25;18:10:28;923.06;Mallorca-Alicante-Madrid;N

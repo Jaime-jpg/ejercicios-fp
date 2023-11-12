@@ -1,3 +1,5 @@
+.vscode
+*.exe
 bisection.py
 mcd_mcm.py
 named_tuple.py
