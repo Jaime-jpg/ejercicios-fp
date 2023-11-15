@@ -14,13 +14,17 @@ from vuelos import (
     suma_de_pasajeros_por_fechas,
     lista_destinos_por_compañía,
     vuelos_entre_fechas,
+    destinos_distintos_por_compañía,
+    códigos_vuelos_más_plazas_que_por_número_de_escalas,
+    vuelo_menor_duración_por_destino,
 )
 
 RUTA_CSV = str(pathlib.Path(__file__).parents[1] / "data" / "vuelos.csv")
 
-
+# OJO: USO 'UNITTEST', UNA LIBRERÍA DE PYTHON QUE SE USA PROFESIONALMENTE PARA TESTEAR
+# CÓDIGO, PERO PROBABLEMENTE NO SEA LO QUE EL PROFESOR QUIERA, COGE INSPIRACIÓN DE
+# ESTE CÓDIGO BAJO TU PROPIA RESPONSABILIDAD
 class TestVuelosFunctions(unittest.TestCase):
-    
     def test_lee_vuelo(self):
         vuelos = lee_vuelos(RUTA_CSV)
         # Visualizamos los tres primeros registros
@@ -115,6 +119,9 @@ class TestVuelosFunctions(unittest.TestCase):
         vuelos_entre_fechas_ = vuelos_entre_fechas(vuelos, fecha_inicio, fecha_fin)
         for destino, precio, escalas in vuelos_entre_fechas_:
             print(f"Destino: {destino}, Precio: {precio}, Escalas: {escalas}")
+        
+            
+    # TODO: test para los ultimos ejercicios
 
 
 if __name__ == "__main__":

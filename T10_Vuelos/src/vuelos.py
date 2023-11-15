@@ -1,9 +1,9 @@
 import csv
 from datetime import date, time, datetime
-from typing import NamedTuple
+import typing
 
 
-class Vuelo(NamedTuple):
+class Vuelo(typing.NamedTuple):
     destino: str
     precio: float
     num_plazas: int
@@ -17,7 +17,7 @@ class Vuelo(NamedTuple):
     económico: bool
 
 
-# no me gusta
+# peor forma de hacerlo:
 #
 # from collections import namedtuple
 # Vuelo = namedtuple(
@@ -117,42 +117,33 @@ def distintas_escalas(vuelos: list[Vuelo]) -> list[str]:
 def vuelos_con_escalas_en(
     vuelos: list[Vuelo], ciudad_escala: str
 ) -> list[tuple[str, float, int]]:
-    filtered_vuelos = [
+    vuelos_filtrados = [
         (v.destino, v.precio, v.num_plazas)
         for v in vuelos
         if ciudad_escala in v.escalas or ciudad_escala == v.destino
     ]
-    return sorted(filtered_vuelos, key=lambda x: x[1])
+    return sorted(vuelos_filtrados, key=lambda x: x[1])
 
 
-def número_de_vuelo_por_destino(vuelos: list[Vuelo]) -> dict:
-    destinos_count = {}
+def número_de_vuelo_por_destino(vuelos: list[Vuelo]) -> dict[str, int]:
+    destinos_count = typing.DefaultDict(int)
     for v in vuelos:
-        if v.destino in destinos_count:
-            destinos_count[v.destino] += 1
-        else:
-            destinos_count[v.destino] = 1
+        destinos_count[v.destino] += 1
     return destinos_count
 
 
-def suma_de_pasajeros_por_fechas(vuelos: list[Vuelo]) -> dict:
-    pasajeros_por_fecha = {}
+def suma_de_pasajeros_por_fechas(vuelos: list[Vuelo]) -> dict[str, int]:
+    pasajeros_por_fecha = typing.DefaultDict(int)
     for v in vuelos:
-        if v.fecha in pasajeros_por_fecha:
-            pasajeros_por_fecha[v.fecha] += v.num_pasajeros
-        else:
-            pasajeros_por_fecha[v.fecha] = v.num_pasajeros
+        pasajeros_por_fecha[v.fecha] += v.num_pasajeros
     return pasajeros_por_fecha
 
 
-def lista_destinos_por_compañía(vuelos: list[Vuelo]) -> dict:
-    destinos_por_compañía = {}
+def lista_destinos_por_compañía(vuelos: list[Vuelo]) -> dict[str, list[str]]:
+    destinos_por_compañía = typing.DefaultDict(list[str])
     for v in vuelos:
         compañía = v.código[:3]
-        if compañía in destinos_por_compañía:
-            destinos_por_compañía[compañía].append(v.destino)
-        else:
-            destinos_por_compañía[compañía] = [v.destino]
+        destinos_por_compañía[compañía].append(v.destino)
     return destinos_por_compañía
 
 
@@ -168,3 +159,33 @@ def vuelos_entre_fechas(
         ),
         key=lambda x: x[1],
     )
+
+
+def destinos_distintos_por_compañía(vuelos: list[Vuelo]) -> dict[str, set[str]]:
+    destinos_por_compañía = typing.DefaultDict(set[str])
+    for v in vuelos:
+        compañía = v.código[:3]
+        destinos_por_compañía[compañía].add(v.destino)
+    return destinos_por_compañía
+
+
+def códigos_vuelos_más_plazas_que_por_número_de_escalas(
+    vuelos: list[Vuelo], plazas: int
+):
+    vuelos_por_numero_de_escalas = typing.DefaultDict(list[str])
+    for v in vuelos:
+        if v.num_plazas == plazas:
+            numero_de_escalas = len(v.escalas)
+            vuelos_por_numero_de_escalas[str(numero_de_escalas)].append(v.código)
+
+    return vuelos_por_numero_de_escalas
+
+
+def vuelo_menor_duración_por_destino(vuelos: list[Vuelo]) -> dict[str, tuple[str, int]]:
+    # OJO: esta solucion puede que sea algo rebuscada, jeje
+    return {
+        v.destino: (v.código, v.duración)
+        for v in sorted(vuelos, key=lambda x: x.duración)
+    }
+
+
