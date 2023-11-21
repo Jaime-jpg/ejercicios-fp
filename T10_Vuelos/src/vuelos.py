@@ -185,7 +185,5 @@ def vuelo_menor_duración_por_destino(vuelos: list[Vuelo]) -> dict[str, tuple[st
     # OJO: esta solucion puede que sea algo rebuscada, jeje
     return {
         v.destino: (v.código, v.duración)
-        for v in sorted(vuelos, key=lambda x: x.duración)
+        for v in sorted(vuelos, key=lambda x: x.duración, reverse=True)
     }
-
-
