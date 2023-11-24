@@ -53,7 +53,7 @@ def lee_vuelos(ruta: str) -> list[Vuelo]:
             precio = float(precio.replace(",", ".").strip())
             num_plazas = int(num_plazas.strip())
             num_pasajeros = int(num_pasajeros.strip())
-            escalas = [i.strip() for i in escalas.split("-")[1:]]
+            escalas = [i.strip() for i in escalas.split("-")]
             económico = económico.strip() == "S"
             vuelo = Vuelo(
                 destino,
@@ -171,7 +171,7 @@ def destinos_distintos_por_compañía(vuelos: list[Vuelo]) -> dict[str, set[str]
 
 def códigos_vuelos_más_plazas_que_por_número_de_escalas(
     vuelos: list[Vuelo], plazas: int
-):
+) -> dict[str, list[str]]:
     vuelos_por_numero_de_escalas = typing.DefaultDict(list[str])
     for v in vuelos:
         if v.num_plazas == plazas:
@@ -187,3 +187,119 @@ def vuelo_menor_duración_por_destino(vuelos: list[Vuelo]) -> dict[str, tuple[st
         v.destino: (v.código, v.duración)
         for v in sorted(vuelos, key=lambda x: x.duración, reverse=True)
     }
+
+
+def promedio_de_precios_por_compañia(
+    vuelos: list[Vuelo], económico: bool
+) -> list[tuple[str, int]]:
+    if económico:
+        vuelos = [v for v in vuelos if v.económico]
+
+    precio_total_vuelos_por_compañia = typing.DefaultDict(float)
+    for v in vuelos:
+        compañia = v.código[:3]
+        precio_total_vuelos_por_compañia[compañia] += v.precio
+
+    return [
+        (c, p / len(tuple(v for v in vuelos if v.código[:3] == c)))
+        for c, p in precio_total_vuelos_por_compañia
+    ]
+
+
+def n_vuelos_mayor_velocidad_por_meses(
+    vuelos: list[Vuelo], n: int
+) -> dict[int, list[tuple[str, date, float]]]:
+    vuelos_mas_rapidos_por_mes = typing.DefaultDict(list[tuple[str, date, float]])
+    for v in sorted(vuelos, key=lambda v: v.velocidad, reverse=True):
+        if len(vuelos_mas_rapidos_por_mes[v.fecha.month]) >= n:
+            continue
+
+        datos = (v.código, v.fecha, v.velocidad)
+        vuelos_mas_rapidos_por_mes[v.fecha.month].append(datos)
+
+    return vuelos_mas_rapidos_por_mes
+
+
+def escala_por_la_que_pasan_más_vuelos_entre_fechas(
+    vuelos: list[Vuelo], inicio: date, fin: date
+) -> typing.Optional[str]:
+    #  Que, recibiendo una lista de tipo Vuelo y dos
+    # fechas (si alguna de ellas, o ambas, toman el valor None no se tendrá en cuenta en el filtro la/s fecha/s que
+    # tomen dicho valor), devuelve la escala por las que pasan más vuelos entre las fechas dadas. Si no hay vuelos
+    # entra las fechas dadas devuelve None.
+    # En el test se pide que se visualice la escala y las fechas consideradas.
+    vuelos_por_escala = typing.DefaultDict(int)
+
+    for v in vuelos:
+        if ((inicio is None) or (inicio <= v.fecha)) and (
+            (fin is None) or (v.fecha <= fin)
+        ):
+            for i in v.escalas:
+                vuelos_por_escala[i] += 1
+
+    if vuelos_por_escala:
+        return max(vuelos_por_escala.items(), key=lambda x: x[1])[0]
+
+    return None
+
+
+def vuelo_con_mayor_porcentaje_de_ocupación_por_destino(
+    vuelos: list[Vuelo],
+) -> dict[str, tuple[str, int, int, float]]:
+    #  Que, recibiendo una lista de tipo Vuelo,
+    # devuelva un diccionario que a cada destino le haga corresponder una tupla con el código de vuelo, el número
+    # de plazas, el número de pasajeros y el porcentaje del vuelo con mayor porcentaje de ocupación al destino
+    # de que se trate.
+    # En el test se pide que se visualice cada pareja clave-valor una debajo de otra
+    datos_por_destinos_con_mayor_ocupacion = {}
+
+    for v in vuelos:
+        porcentaje_de_ocupacion = v.num_pasajeros / v.num_plazas * 100
+        datos_actuales = datos_por_destinos_con_mayor_ocupacion.get(v.destino)
+
+        if not datos_actuales or (datos_actuales[3] < porcentaje_de_ocupacion):
+            datos_por_destinos_con_mayor_ocupacion[v.destino] = (
+                v.código,
+                v.num_plazas,
+                v.num_pasajeros,
+                porcentaje_de_ocupacion,
+            )
+
+    return datos_por_destinos_con_mayor_ocupacion
+
+
+def destino_menor_promedio_de_precios_mayor_porcentaje_ocupación(
+    vuelos: list[Vuelo], porcentaje_umbral: float
+) -> str:
+    #  Que, recibiendo una lista de tipo
+    # Vuelo y un número real, devuelva el destino al que, de promedio, cuesta menos el billete de los vuelos cuyo
+    # porcentaje de ocupación sea mayor o igual que el número real dado.
+    # En el test se pide que se visualice el número real y el destino obtenido.
+    vuelos_filtrados = (
+        v for v in vuelos if v.num_pasajeros / v.num_plazas * 100 >= porcentaje_umbral
+    )
+    return min(vuelos_filtrados, key=lambda v: v.precio).destino
+
+def compañía_con_más_pasajeros_por_destino(vuelos: list[Vuelo]) -> dict[str, str]:
+    # otra solucion es (puede que sea más eficiente, no he hecho pruebas):
+    #
+    # compañia_por_destino = {}
+    # pasajeros_por_destino = typing.DefaultDict(int)
+    #
+    # for v in vuelos:
+    #     if v.num_pasajeros > pasajeros_por_destino[v.destino]:
+    #         pasajeros_por_destino[v.destino] = v.num_pasajeros
+    #
+    #         compañia = v.código[:3]
+    #         compañia_por_destino[compañia] = v.destino
+    #
+    # return compañia_por_destino
+
+    vuelos = sorted(vuelos, key=lambda v: v.num_pasajeros)
+
+    return {
+        v.destino: v.código[:3]
+        for v in vuelos
+    }
+
+
