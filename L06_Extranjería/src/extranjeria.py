@@ -76,7 +76,7 @@ def barrio_mas_multicultural(registros: list[RegistroExtranjeria]) -> str:
 
 def barrio_con_mas_extranjeros(
     registros: list[RegistroExtranjeria],
-    tipo: typing.Literal["Hombres", "Mujeres", None] = None,
+    tipo: typing.Literal["HOMBRES", "MUJERES", None] = None,
 ) -> str:
     # recibe una lista de tuplas de tipo RegistroExtranjeria y devuelve el nombre del barrio en el que hay un mayor número de extranjeros, bien sea en total (tanto hombres como mujeres) si tipo tiene el valor None, bien sea de hombres si tipo es 'Hombres', o de mujeres si tipo es 'Mujeres'.
     extranjeros_por_barrio = typing.DefaultDict(int)
@@ -84,17 +84,35 @@ def barrio_con_mas_extranjeros(
     if tipo is None:
         for i in registros:
             extranjeros_por_barrio[i.barrio] += i.hombres + i.mujeres
-    elif tipo.upper() == "Hombres":
+    elif tipo == "HOMBRES":  # no hace falta usar .upper() al tipar con typing.Literal
         for i in registros:
             extranjeros_por_barrio[i.barrio] += i.hombres
     else:
         for i in registros:
             extranjeros_por_barrio[i.barrio] += i.mujeres
-    
+
     return max(extranjeros_por_barrio.items(), key=lambda x: x[1])[0]
-        
 
 
-def pais_mas_representado_por_distrito(registros):
+def pais_mas_representado_por_distrito(
+    registros: list[RegistroExtranjeria],
+) -> dict[str, str]:
     # recibe una lista de tuplas de tipo RegistroExtranjeria y devuelve un diccionario de tipo {str:str} en el que las claves son los distritos y los valores los países de los que hay más extranjeros residentes en cada distrito.
-    ...
+    distritos = sorted({i.distrito for i in registros})
+    pais_por_distrito = {}
+
+    for distrito in distritos:
+        personas_por_pais_en_el_distrito = typing.DefaultDict(int)
+
+        personas_en_el_distrito = [
+            (i.pais, i.hombres + i.mujeres) for i in registros if i.distrito == distrito
+        ]
+
+        for i in personas_en_el_distrito:
+            personas_por_pais_en_el_distrito[i[0]] += i[1]
+
+        pais_por_distrito[distrito] = max(
+            personas_por_pais_en_el_distrito.items(), key=lambda x: x[1]
+        )[0]
+
+    return pais_por_distrito

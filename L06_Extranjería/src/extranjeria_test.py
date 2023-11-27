@@ -1,4 +1,3 @@
-from ntpath import join
 import extranjeria
 import pathlib
 
@@ -31,7 +30,9 @@ def test_secciones_distritos_con_extranjeros_nacionalidades() -> None:
     resultado = extranjeria.secciones_distritos_con_extranjeros_nacionalidades(
         datos, {"ALEMANIA", "ITALIA"}
     )
-    print(f"Hay {len(resultado)} secciones de distritos con residentes cuya procedencia es ALEMANIA o ITALIA.")
+    print(
+        f"Hay {len(resultado)} secciones de distritos con residentes cuya procedencia es ALEMANIA o ITALIA."
+    )
     print("Tres primeras secciones:")
     print(resultado[:3])
 
@@ -64,10 +65,21 @@ def test_barrio_con_mas_extranjeros() -> None:
     # recibe una lista de tuplas de tipo RegistroExtranjeria y devuelve el nombre del barrio en el que hay un mayor número de extranjeros, bien sea en total (tanto hombres como mujeres) si tipo tiene el valor None, bien sea de hombres si tipo es 'Hombres', o de mujeres si tipo es 'Mujeres'.
     datos = extranjeria.lee_datos_extranjeria(str(RUTA_CSV))
 
+    resultado_1 = extranjeria.barrio_con_mas_extranjeros(datos)
+    resultado_2 = extranjeria.barrio_con_mas_extranjeros(datos, "HOMBRES")
+    resultado_3 = extranjeria.barrio_con_mas_extranjeros(datos, "MUJERES")
+
+    print(f"El barrio con más residentes extranjeros es {resultado_1}")
+    print(f"El barrio con más hombres residentes extranjeros es {resultado_2}")
+    print(f"El barrio con más mujeres residentes extranjeras es {resultado_3}")
+
 
 def test_pais_mas_representado_por_distrito() -> None:
     # recibe una lista de tuplas de tipo RegistroExtranjeria y devuelve un diccionario de tipo {str:str} en el que las claves son los distritos y los valores los países de los que hay más extranjeros residentes en cada distrito.
     datos = extranjeria.lee_datos_extranjeria(str(RUTA_CSV))
+    resultado = extranjeria.pais_mas_representado_por_distrito(datos)
+    for i, j in resultado.items():
+        print(f"Distrito {i} => {j}")
 
 
 def main() -> None:
@@ -82,9 +94,9 @@ def main() -> None:
         test_pais_mas_representado_por_distrito,
     )
 
-    for i in tests:
-        print("=" * 10, i.__name__, "=" * 10)
-        i()
+    for test in tests:
+        print("=" * 10, test.__name__, "=" * 10)
+        test()
         print()
 
 
