@@ -1,7 +1,6 @@
 from collections import namedtuple
 import csv
 from coordenadas import Coordenadas, calcular_distancia, calcular_media_coordenadas
-import folium
 from mapas import crea_mapa, agrega_marcador, guarda_mapa
 
 CentroSanitario = namedtuple(
@@ -64,6 +63,6 @@ def generar_mapa(centros: list[tuple[str, str, Coordenadas]]) -> None:
         agrega_marcador(mapa, i[2], i[0], "red")
     guarda_mapa(
         mapa,
-        "C:\\Users\\jaime\\Documents\\ProyectosPython\\"
-        "L04_Centros_sanitarios\\data\\mapa.html",
+        "C:/Users/jaime/Documents/ProyectosPython/"
+        "L04_Centros_sanitarios/data/mapa.html",
     )

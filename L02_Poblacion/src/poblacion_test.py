@@ -106,7 +106,7 @@ def test_muestra_comparativa_paises_anyo(datos):
 ################################################################
 #  Programa principal
 ################################################################
-RUTA_ARCHIVO = "C:\\Users\\jaime\\Documents\\ProyectosPython\\L02_Poblacion\\data\\population.csv"
+RUTA_ARCHIVO = "C:/Users/jaime/Documents/ProyectosPython/L02_Poblacion/data/population.csv"
 
 # >>> comentario de Jaime: es mala práctica llamar múltiples funciones dentro del 'if __name__ == "__main__"' (mirar mis otros archivos para ver como se debe hacer)
 if __name__ == "__main__":

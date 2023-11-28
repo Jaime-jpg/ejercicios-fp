@@ -5,7 +5,7 @@ from datos_personales import (
     lee_datos_personales4,
 )
 
-RUTA_CSV = "C:\\Users\\jaime\\Documents\\ProyectosPython\\T09_Datos_Personales\\data\\"
+RUTA_CSV = "C:/Users/jaime/Documents/ProyectosPython/T09_Datos_Personales/data/"
 RUTA_ARCHIVO_1 = RUTA_CSV + "datos_personales.csv"
 RUTA_ARCHIVO_2 = RUTA_CSV + "datos_personales2.csv"
 RUTA_ARCHIVO_3 = RUTA_CSV + "datos_personales3.csv"
