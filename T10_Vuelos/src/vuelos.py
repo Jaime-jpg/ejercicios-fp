@@ -275,10 +275,27 @@ def destino_menor_promedio_de_precios_mayor_porcentaje_ocupación(
     # Vuelo y un número real, devuelva el destino al que, de promedio, cuesta menos el billete de los vuelos cuyo
     # porcentaje de ocupación sea mayor o igual que el número real dado.
     # En el test se pide que se visualice el número real y el destino obtenido.
-    vuelos_filtrados = (
-        v for v in vuelos if v.num_pasajeros / v.num_plazas * 100 >= porcentaje_umbral
+    precios_por_destino = typing.DefaultDict(list[float])
+    for v in vuelos:
+        if v.num_pasajeros / v.num_plazas * 100 >= porcentaje_umbral:
+            precios_por_destino[v.destino].append(v.precio)
+
+    promedio_precios_por_destino = {
+        i: sum(j) / len(j) for i, j in precios_por_destino.items()
+    }
+
+    return min(promedio_precios_por_destino.items(), key=lambda x: x[1])[0]
+
+
+import pathlib
+
+RUTA_CSV = str(pathlib.Path(__file__).parents[1] / "data" / "vuelos.csv")
+print(
+    destino_menor_promedio_de_precios_mayor_porcentaje_ocupación(
+        lee_vuelos(RUTA_CSV), 75.0
     )
-    return min(vuelos_filtrados, key=lambda v: v.precio).destino
+)
+
 
 def compañía_con_más_pasajeros_por_destino(vuelos: list[Vuelo]) -> dict[str, str]:
     # otra solucion es (puede que sea más eficiente, no he hecho pruebas):
@@ -294,12 +311,31 @@ def compañía_con_más_pasajeros_por_destino(vuelos: list[Vuelo]) -> dict[str, 
     #         compañia_por_destino[compañia] = v.destino
     #
     # return compañia_por_destino
-
-    vuelos = sorted(vuelos, key=lambda v: v.num_pasajeros)
+    pasajeros_por_compañia_y_destino = typing.DefaultDict(int)
+    for v in vuelos:
+        pasajeros_por_compañia_y_destino[(v.código[:3], v.destino)] += v.num_pasajeros
 
     return {
-        v.destino: v.código[:3]
-        for v in vuelos
+        v[0][1]: v[0][0]
+        for v in sorted(pasajeros_por_compañia_y_destino.items(), key=lambda x: x[1])
     }
 
 
+def calcular_el_incremento_o_decremento_de_pasajeros(
+    vuelos: list[Vuelo],
+) -> list[tuple[date, int]]:
+    # Que, recibiendo una lista de tipo Vuelo, devuelva
+    # una lista de tuplas con la fecha del día con el incremento o decremento de los pasajeros que vuelan ese día
+    # respecto al anterior.
+    # En el test se pide que se visualice la lista de tuplas una debajo de otra.
+    fechas = tuple({v.fecha for v in vuelos})
+    pasajeros_por_fecha = (
+        sum(v.num_pasajeros for v in vuelos if v.fecha == f) for f in fechas
+    )
+    # diferencias_por_fecha
+    # return [(i, j) for i, j in zip(pasajeros_por_fecha, pasajeros_por_fecha[1:])]
+
+
+# a = calcular_el_incremento_o_decremento_de_pasajeros(lee_vuelos(RUTA_CSV))
+# for i, j in a:
+#     print(i, j)
