@@ -5,7 +5,6 @@
 
 import typing
 import csv
-import collections
 
 # FrecuenciaNombre = namedtuple('FrecuenciaNombre', 'año,nombre,frecuencia,genero')
 

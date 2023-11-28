@@ -14,7 +14,7 @@ from collections import namedtuple
 RegistroPoblacion = namedtuple("RegistroPoblacion", "pais, codigo, año, censo")
 
 ############################################################################################
-def lee_poblaciones(ruta_fichero):
+def lee_poblaciones(ruta_fichero: str) -> list[RegistroPoblacion]:
     """
     Lee el fichero de entrada y devuelve una lista de tuplas poblaciones
 
@@ -31,7 +31,7 @@ def lee_poblaciones(ruta_fichero):
         ]    
 
 
-def calcula_paises(poblaciones: [tuple]):
+def calcula_paises(poblaciones: list[RegistroPoblacion]) -> list[str]:
     """
     Calcula la lista de países distintos presentes en una lista de de tuplas de tipo RegistroPoblacion.
 
@@ -44,7 +44,7 @@ def calcula_paises(poblaciones: [tuple]):
     return sorted({i.pais for i in poblaciones})
 
 
-def filtra_por_pais(poblaciones, pais_o_codigo):
+def filtra_por_pais(poblaciones: list[RegistroPoblacion], pais_o_codigo: str) -> list[tuple[int, int]]:
     """
     Devuelve el año y el censo de las tuplas correspondientes a un determinado pais
 

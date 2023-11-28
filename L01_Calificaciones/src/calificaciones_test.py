@@ -52,14 +52,16 @@ def main() -> None:
         f" teoria {media_teoria_1}, práctica {notas_practica[0]},"
         f" cuatrimestre {nota_cuatrimestre(teoria_1, notas_practica[0])}"
     )
-    
+
     print(f"Tus notas del segundo cuatrimestre son:")
     print(
         f" teoria {media_teoria_2}, práctica {notas_practica[1]},"
         f" cuatrimestre {nota_cuatrimestre(teoria_2, notas_practica[1])}"
     )
 
-    print(f"Tu nota final de la asignatura es {nota_continua(notas_teoria, notas_practica)}")
+    print(
+        f"Tu nota final de la asignatura es {nota_continua(notas_teoria, notas_practica)}"
+    )
 
 
 if __name__ == "__main__":

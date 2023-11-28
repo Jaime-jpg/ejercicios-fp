@@ -1,9 +1,9 @@
-from typing import Union
+from typing import Optional
 
-nota = Union[float, None]
+nota = Optional[float]
 
 
-def solicita_notas() -> tuple[str, tuple[nota, nota, nota, nota], tuple[nota, nota]]:
+def solicita_notas() -> tuple[str, list[nota], list[nota]]:
     nombre = input("Introduce tu nombre: ")
     
     notas_teoria = [None] * 4

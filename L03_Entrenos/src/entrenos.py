@@ -38,17 +38,17 @@ def filtra_por_ubicacion(entrenos: list[Entreno], ubicacion: str) -> list[Entren
 
 
 def _fecha_en_intervalo(
-    fecha: datetime.date,
-    fecha_inicio: datetime.date,
-    fecha_fin: datetime.date,
+    fecha: date,
+    fecha_inicio: date,
+    fecha_fin: date,
 ) -> bool:
     return fecha_inicio <= fecha < fecha_fin
 
 
 def tipos_entrenamiento(
     entrenos: list[Entreno],
-    fecha_inicio: Union[datetime.date, None],
-    fecha_fin: Union[datetime.date, None],
+    fecha_inicio: Union[date, None],
+    fecha_fin: Union[date, None],
 ) -> int:
     fecha_inicio = fecha_inicio or date.min  # eliminamos los None
     fecha_fin = fecha_fin or date.max
