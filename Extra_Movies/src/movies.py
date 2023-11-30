@@ -128,7 +128,7 @@ def mejor_valorada_por_idioma(movies: list[Pelicula]) -> dict[str, Pelicula]:
 
 def media_calificaciones(movies: list[Pelicula], generos: set[str]) -> float:
     notas = [pelicula.vote_average for pelicula in movies if generos <= pelicula.genres]
-    return sum(notas) / len(notas) if len(notas) > 0 else 0.0
+    return sum(notas) / len(notas) if notas else 0.0
 
 
 def top_n_por_genero(movies: list[Pelicula], n: int) -> dict[str, list[Pelicula]]:
