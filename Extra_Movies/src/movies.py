@@ -141,4 +141,3 @@ def top_n_por_genero(movies: list[Pelicula], n: int) -> dict[str, list[Pelicula]
                 peliculas_por_generos[genero].append(pelicula)
 
     return peliculas_por_generos
-

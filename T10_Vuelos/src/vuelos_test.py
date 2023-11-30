@@ -100,10 +100,11 @@ class TestVuelosFunctions(unittest.TestCase):
         vuelos = lee_vuelos(RUTA_CSV)
         pasajeros_por_fecha = suma_de_pasajeros_por_fechas(vuelos)
         print(pasajeros_por_fecha)  # a) Visualizar el diccionario directamente
-        for fecha, pasajeros in pasajeros_por_fecha.items():
-            # b) Visualizar cada pareja clave-valor
+        for fecha, pasajeros in tuple(pasajeros_por_fecha.items())[:3]:
+            # b) Visualizar cada pareja clave-valor (3 primeros)
             print(f"{fecha}: {pasajeros}")
-        fecha_input = input("Ingrese una fecha (YYYY-MM-DD): ")
+
+        fecha_input = input("Selecciona una fecha (YYYY-MM-DD): ")
         fecha = date.fromisoformat(fecha_input)
         if fecha in pasajeros_por_fecha:
             print(pasajeros_por_fecha[fecha])
