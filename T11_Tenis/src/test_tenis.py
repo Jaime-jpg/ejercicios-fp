@@ -1,4 +1,3 @@
-from os import error
 import tenis
 import pathlib
 from datetime import date
@@ -56,42 +55,68 @@ def test_n_tenistas_con_mas_errores(datos) -> None:
 
 def test_fechas_ordenadas_por_jugador(datos) -> None:
     # recibe una lista de tuplas de tipo PartidoTenis y devuelve un diccionario en el que a cada jugador le hace corresponder una lista ordenada con las fechas de sus partidos.
+    # OJO: el test del enunciado (README.md) no está bien, las fechas no están ordenadas
     resultado = tenis.fechas_ordenadas_por_jugador(datos)
+    print("Fechas de los partidos de cada jugador:")
+    for jugador, fechas in resultado.items():
+        print(jugador)
+        for i in fechas:
+            print(i.strftime(r"%d/%m/%Y"), end="  ")
+        print()
 
 
 def test_num_partidos_nombre(datos) -> None:
     # recibe el nombre de un tenista y devuelve un diccionario en el que las claves son las superficies y los valores una tupla con el némero de partidos jugados y ganados por el tenista en la superficie dada como clave.
-    resultado = tenis.num_partidos_nombre(datos)
+    print(f"{tenis.num_partidos_nombre(datos, "Rafael Nadal") = }")
+    print(f"{tenis.num_partidos_nombre(datos, "Carlos Alcaraz") = }")
 
 
 def test_num_tenistas_distintos_por_superficie(datos) -> None:
     # recibe una lista de tuplas de tipo PartidoTenis, y devuelve un diccionario tal que a cada superficie (clave) le hace corresponder el némero de jugadores distintos que han jugado partidos en ese tipo de superficie. (1,5 puntos)
-    resultado = tenis.num_tenistas_distintos_por_superficie(datos)
+    print(f"{tenis.num_tenistas_distintos_por_superficie(datos) = }")
 
 
 def test_superficie_con_mas_tenistas_distintos(datos) -> None:
     # recibe una lista de tuplas de tipo PartidoTenies y devuelve una tupla con la superficie en la que juegan un mayor némero de jugadores distintos, y el némero de jugadores que han jugado en esa superficie.
-    resultado = tenis.superficie_con_mas_tenistas_distintos(datos)
+    print(f"{tenis.superficie_con_mas_tenistas_distintos(datos) = }")
 
 
 def test_mas_errores_por_jugador(datos) -> None:
     # recibe una lista de tuplas de tipo PartidoTenis y devuelve un diccionario en el que a cada jugador y le hace corresponder el partido en el que ha cometido mayor némero de errores no forzados.
     resultado = tenis.mas_errores_por_jugador(datos)
+    print("Partido con más errores de cada jugador:")
+    for i, j in resultado.items():
+        print(f"{i} -> {j}")
+        
 
 
 def test_partido_mas_errores_por_mes(datos) -> None:
     # recibe una lista de tuplas de tipo PartidoTenis, y una lista de cadenas con tipos de superficie, que toma como valor por defecto None, y devuelve un diccionario que asocia a cada mes, una tupla (fecha del partido, jugador1, jugador2) que representa al partido de ese mes jugado en una de las superficies de la lista dada como parámetro en el que se han cometido más errores no forzados, teniendo en cuenta los errores de ambos jugadores. Si la lista de superficies dada como parámetro tiene como valor None, entonces se tendrán en cuenta todas las superficies para generar el diccionario resultante. (2 puntos).
-    resultado = tenis.partido_mas_errores_por_mes(datos)
+    resultado = tenis.partido_mas_errores_por_mes(datos, ["Sintética"])
+    for i, j in resultado.items():
+        print(f"{i} -> {j}")    
+    
+    resultado = tenis.partido_mas_errores_por_mes(datos, ["Sintética", "Tierra"])
+    for i, j in resultado.items():
+        print(f"{i} -> {j}")
+
+    resultado = tenis.partido_mas_errores_por_mes(datos, None)
+    for i, j in resultado.items():
+        print(f"{i} -> {j}")
 
 
 def test_n_partidos_mas_errores_por_jugador(datos) -> None:
     # recibe una lista de tuplas de tipo PartidoTenis y un valor entero n y devuelve un diccionario en el que a cada jugador le hace corresponder una lista con los n partidos en los que ha cometido más errores no forzados.
-    resultado = tenis.n_partidos_mas_errores_por_jugador(datos)
+    resultado = tenis.n_partidos_mas_errores_por_jugador(datos, 3)
+    for i, j in resultado.items():
+        print(f"{i} -> {j}")
 
 
 def test_mayor_numero_dias_sin_jugar(datos) -> None:
     # recibe una lista de partidos y un jugador y devuelve el máximo némero de días sin jugar del jugador dado. Si el jugador solo ha disputado un partido devolverá None.
-    resultado = tenis.mayor_numero_dias_sin_jugar(datos)
+    jugador = "Carlos Alcaraz"
+    resultado = tenis.mayor_numero_dias_sin_jugar(datos, jugador)
+    print(f"{jugador}: {resultado}")
 
 
 def main() -> None:
